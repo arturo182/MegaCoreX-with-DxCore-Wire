@@ -48,6 +48,8 @@ SOFTWARE.
                           // It is not advised to use this define. Only use this when you need the RAM **really** badly
 */
 
+#define TWI_MANDS
+
 #if (!defined(TWI1) && defined(TWI_USING_WIRE1))
   // If pins for Wire1 are not defined, but TWI_USING_WIRE1 was defined in the boards.txt menu, throw an error. Used for 28-pin DA/DB parts
   #error "This part only provides a single Wire interface."

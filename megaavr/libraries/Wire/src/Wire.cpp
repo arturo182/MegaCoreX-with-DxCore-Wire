@@ -234,7 +234,7 @@ bool TwoWire::swapModule(TWI_t *twi_module) {
       }
     #endif
   #else
-    badCall("Only one TWI module available, nothing to switch with");
+    //badCall("Only one TWI module available, nothing to switch with");
   #endif
   (void)twi_module;   // Remove warning unused variable
   return false;
@@ -362,11 +362,11 @@ uint8_t TwoWire::specialConfig( __attribute__ ((unused)) bool smbuslvl, __attrib
   #if !defined(TWI_INPUTLVL_bm) // if there's no input level option, we want to notify the user with an error so they don't think they have a feature they don't
     if (__builtin_constant_p(smbuslvl))  { //but they could be passign a zero, which is legal. See if it's constant...
       if (smbuslvl) {                      // and non-zero, in which case error:
-        badCall("the smbus level option is not present on these parts. You need a Dx for that.");
+        //badCall("the smbus level option is not present on these parts. You need a Dx for that.");
       }
     } else if (smbuslvl_dual) { //same deal for dual mode
       if (smbuslvl_dual) {
-        badCall("the smbus level option is not present on these parts. You need a Dx for that.");
+        //badCall("the smbus level option is not present on these parts. You need a Dx for that.");
       }
     // the above will always fold to nothing or and error, and does not bloat binary
     // but we may not know at compile time what will be passed, so we have to have a runtime test.
@@ -818,7 +818,7 @@ uint8_t TwoWire::slaveTransactionOpen() {
  *            To disable dualmode, please use Wire.endSlave() (in MANDS case) or Wire.end();
  *
  *@param      bool fmp_enable - set true if the TWI module has to expect a high
- *              frequency (>400kHz) on the salve pins
+ *              frequency (>400kHz) on the slave pins
  *
  *@return     void
  */
@@ -876,7 +876,7 @@ void TwoWire::selectSlaveBuffer(void) {
   #if defined(TWI_MANDS)
     vars._bools._toggleStreamFn = 0x01;
   #else
-    badCall("selectSlaveBuffer() was called, but simultaneous mode is not selected");
+    //badCall("selectSlaveBuffer() was called, but simultaneous mode is not selected");
   #endif
 }
 
